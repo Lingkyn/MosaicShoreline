@@ -11,7 +11,7 @@ public class GMCmd
         PackageTable packageTable = Resources.Load<PackageTable>("Data/PackageTable");
         foreach (PackageTableItem packageItem in packageTable.DataList)
         {
-            Debug.Log(string.Format("[id]:{0},[type]:{1},[name]:{2}", packageItem.id, packageItem.type, packageItem.name));
+            Debug.Log(string.Format("[id]:{0},[type]:{1},[name]:{2},[imagePath]:{3}", packageItem.id, packageItem.type, packageItem.name,packageItem.imagePath));
         }
     }
 
@@ -20,7 +20,7 @@ public class GMCmd
     {
         //保存数据
         PackageLocalData.Instance.items = new List<PackageLocalItem>();
-        for (int i = 1; i < 9; i++)
+        for (int i = 1; i < 11; i++)
         {
             PackageLocalItem packageLocalItem = new()
             {
@@ -44,5 +44,12 @@ public class GMCmd
             Debug.Log(item);
         }
     }
+
+[MenuItem("GMCmd/OpenPackagePanel")]
+    public static void OpenPackagePanel()
+    {
+        UIManager.Instance.OpenPanel(UIConst.PackagePanel);
+    }
+
 }
 

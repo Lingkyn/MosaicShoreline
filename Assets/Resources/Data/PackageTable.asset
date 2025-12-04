@@ -19,21 +19,21 @@ MonoBehaviour:
     name: Spartina
     description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
       prevents erosion, and provides habitat in tidal marshes.
-    imagePath: Sprites/Vegetation/Spartina.jpeg
+    imagePath: Sprites/Vegetation/Spartina
   - id: 1
     categrory: 0
     type: 0
     name: Juncus
     description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
       prevents erosion, and provides habitat in tidal marshes.
-    imagePath: Sprites/Vegetation/Spartina.jpeg
+    imagePath: Sprites/Vegetation/Spartina
   - id: 2
     categrory: 0
     type: 0
     name: Salicornia
     description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
       prevents erosion, and provides habitat in tidal marshes.
-    imagePath: Sprites/Vegetation/Spartina.jpeg
+    imagePath: Sprites/Vegetation/Spartina
   - id: 3
     categrory: 0
     type: 0
