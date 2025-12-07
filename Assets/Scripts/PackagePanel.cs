@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PackagePanel : BasePanel
 {
@@ -21,6 +22,10 @@ public class PackagePanel : BasePanel
     private Transform UIBottomMenus;
     private Transform UIDeleteBtn;
     private Transform UIDetailBtn;
+
+    private Transform currentSelectedMenu;  // 当前选中的菜单
+    private PackageCell currentSelectedCell;  // 当前选中的格子
+    private System.Collections.Generic.List<PackageCell> allPackageCells = new System.Collections.Generic.List<PackageCell>();  // 所有的格子列表
 
     public GameObject PackageUIItemPrefab;
 
@@ -56,6 +61,8 @@ public class PackagePanel : BasePanel
         {
             Destroy(scrollContent.GetChild(i).gameObject);
         }
+        // 清空格子列表
+        allPackageCells.Clear();
         PackageLocalItem firstItem = null;
         int count = 0;
         foreach (PackageLocalItem localData in GameManager.Instance.GetSortPackageLocalData())
@@ -64,6 +71,8 @@ public class PackagePanel : BasePanel
             PackageCell packageCell = PackageUIItem.GetComponent<PackageCell>();
             // 关键：把本地数据和父面板传给格子，否则格子不会填充名称和图片
             packageCell.Refresh(localData, this);
+            // 添加到格子列表
+            allPackageCells.Add(packageCell);
             if (firstItem == null) firstItem = localData;
             count++;
         }
@@ -130,23 +139,84 @@ public class PackagePanel : BasePanel
         UIDeleteBtn.GetComponent<Button>().onClick.AddListener(OnDelete);
         UIDetailBtn.GetComponent<Button>().onClick.AddListener(OnDetail);
 
+        // 默认选中 Vegetation
+        SwitchMenu(UIMenuVegetation);
+    }
+
+    private void SwitchMenu(Transform selectedMenu)
+    {
+        // 重置所有菜单按钮状态
+        ResetMenuState(UIMenuVegetation);
+        ResetMenuState(UIMenuSand);
+        ResetMenuState(UIMenuRocks);
+        ResetMenuState(UIMenuShellfish);
+
+        // 激活选中的菜单
+        ActivateMenuState(selectedMenu);
+        currentSelectedMenu = selectedMenu;
+
+        // 更新TabName文本
+        UpdateTabName(selectedMenu);
+    }
+
+    private void UpdateTabName(Transform selectedMenu)
+    {
+        if (UITabName == null) return;
+
+        TextMeshProUGUI tabNameText = UITabName.GetComponent<TextMeshProUGUI>();
+        if (tabNameText == null) return;
+
+        if (selectedMenu == UIMenuVegetation)
+            tabNameText.text = "VEGETATION";
+        else if (selectedMenu == UIMenuSand)
+            tabNameText.text = "SAND";
+        else if (selectedMenu == UIMenuRocks)
+            tabNameText.text = "ROCKS";
+        else if (selectedMenu == UIMenuShellfish)
+            tabNameText.text = "SHELLFISH";
+    }
+
+    private void ResetMenuState(Transform menu)
+    {
+        Transform icon1 = menu.Find("Icon1");
+        Transform icon2 = menu.Find("Icon2");
+        Transform select = menu.Find("Select");
+
+        if (icon1 != null) icon1.gameObject.SetActive(true);
+        if (icon2 != null) icon2.gameObject.SetActive(false);
+        if (select != null) select.gameObject.SetActive(false);
+    }
+
+    private void ActivateMenuState(Transform menu)
+    {
+        Transform icon1 = menu.Find("Icon1");
+        Transform icon2 = menu.Find("Icon2");
+        Transform select = menu.Find("Select");
+
+        if (icon1 != null) icon1.gameObject.SetActive(false);
+        if (icon2 != null) icon2.gameObject.SetActive(true);
+        if (select != null) select.gameObject.SetActive(true);
     }
     private void OnClickVegetation()
     {
         print(">>>>> OnClickVegetation");
+        SwitchMenu(UIMenuVegetation);
     }
 
     private void OnClickSand()
     {
         print(">>>>> OnClickSand");
+        SwitchMenu(UIMenuSand);
     }
     private void OnClickRocks()
     {
         print(">>>>> OnClickRocks");
+        SwitchMenu(UIMenuRocks);
     }
     private void OnClickShellfish()
     {
         print(">>>>> OnClickShellfish");
+        SwitchMenu(UIMenuShellfish);
     }
 
     private void OnClickClose()
@@ -159,11 +229,49 @@ public class PackagePanel : BasePanel
     private void OnClickLeft()
     {
         print(">>>>> OnClickLeft");
+        if (allPackageCells.Count == 0) return;
+
+        int currentIndex = -1;
+        if (currentSelectedCell != null)
+        {
+            currentIndex = allPackageCells.IndexOf(currentSelectedCell);
+        }
+
+        // 切换到上一个
+        int previousIndex = currentIndex - 1;
+        if (previousIndex < 0)
+        {
+            previousIndex = allPackageCells.Count - 1;  // 循环到最后一个
+        }
+
+        // 选中并显示详情
+        PackageCell targetCell = allPackageCells[previousIndex];
+        SelectCell(targetCell);
+        ShowDetail(targetCell.GetLocalData());
     }
 
     private void OnClickRight()
     {
         print(">>>>> OnClickRight");
+        if (allPackageCells.Count == 0) return;
+
+        int currentIndex = -1;
+        if (currentSelectedCell != null)
+        {
+            currentIndex = allPackageCells.IndexOf(currentSelectedCell);
+        }
+
+        // 切换到下一个
+        int nextIndex = currentIndex + 1;
+        if (nextIndex >= allPackageCells.Count)
+        {
+            nextIndex = 0;  // 循环到第一个
+        }
+
+        // 选中并显示详情
+        PackageCell targetCell = allPackageCells[nextIndex];
+        SelectCell(targetCell);
+        ShowDetail(targetCell.GetLocalData());
     }
 
     private void OnDeleteBack()
@@ -184,6 +292,23 @@ public class PackagePanel : BasePanel
     private void OnDetail()
     {
         print(">>>>> OnDetail");
+    }
+
+    // Called by PackageCell when a cell is clicked to select it
+    public void SelectCell(PackageCell cell)
+    {
+        // 取消之前选中的格子
+        if (currentSelectedCell != null)
+        {
+            currentSelectedCell.SetSelectState(false);
+        }
+
+        // 设置新选中的格子
+        currentSelectedCell = cell;
+        if (currentSelectedCell != null)
+        {
+            currentSelectedCell.SetSelectState(true);
+        }
     }
 
     // Called by PackageCell when a cell is clicked to display detail info

@@ -76,11 +76,20 @@ public class PackageCell : MonoBehaviour, IPointerClickHandler,IPointerEnterHand
         Debug.Log("PackageCell: 点击了物品格子 " + eventData.ToString(), this);
         if (uiParent != null)
         {
+            uiParent.SelectCell(this);
             uiParent.ShowDetail(this.packageLocalData);
         }
         else
         {
             Debug.LogWarning("PackageCell: uiParent is null, cannot show detail", this);
+        }
+    }
+
+    public void SetSelectState(bool isSelected)
+    {
+        if (UISelect != null)
+        {
+            UISelect.gameObject.SetActive(isSelected);
         }
     }
 
@@ -92,5 +101,10 @@ public class PackageCell : MonoBehaviour, IPointerClickHandler,IPointerEnterHand
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("PackageCell: 鼠标离开物品格子 " + eventData.ToString(), this);
+    }
+
+    public PackageLocalItem GetLocalData()
+    {
+        return packageLocalData;
     }
 }

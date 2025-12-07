@@ -24,78 +24,78 @@ MonoBehaviour:
     categrory: 0
     type: 0
     name: Juncus
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Juncus is a marsh-dwelling rush that tolerates flooding, reinforces
+      wetland soils, and provides structure for tidal habitat.
     imagePath: Sprites/Vegetation/Juncus
   - id: 2
     categrory: 0
     type: 0
     name: Salicornia
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Salicornia is a succulent salt-marsh plant that stores water, stabilizes
+      saline mudflats, and thrives in high-salt tidal zones.
     imagePath: Sprites/Vegetation/Salicornia
   - id: 3
     categrory: 0
     type: 0
     name: Distichlis
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Distichlis is a hardy salt-tolerant grass that binds coastal soils,
+      reduces erosion, and persists in harsh saline environments.
     imagePath: Sprites/Vegetation/Distichlis
   - id: 4
     categrory: 0
     type: 0
     name: Limonium
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Limonium is a coastal flowering plant that withstands salt spray,
+      supports pollinators, and adds resilience to shoreline ecosystems.
     imagePath: Sprites/Vegetation/Limonium
   - id: 5
     categrory: 0
     type: 0
     name: Scirpus
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Schoenoplectus is a strong-rooted wetland sedge that buffers wave
+      energy, traps sediments, and creates habitat in shallow marshes.
     imagePath: Sprites/Vegetation/Scirpus
   - id: 6
     categrory: 0
     type: 1
     name: Rhizophora
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Rhizophora is a true mangrove with prop roots that trap sediments,
+      reduce wave energy, and stabilize seaward shorelines.
     imagePath: Sprites/Vegetation/Rhizophora
   - id: 7
     categrory: 0
     type: 1
     name: Avicennia
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Avicennia is a salt-tolerant mangrove with pneumatophores and salt-excreting
+      leaves that colonize tidal flats and strengthen muddy coasts.
     imagePath: Sprites/Vegetation/Avicennia
   - id: 8
     categrory: 0
     type: 1
     name: Laguncularia
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Laguncularia, the white mangrove, has shallow roots and small pneumatophores
+      that stabilize inner mangrove zones and capture fine sediments.
     imagePath: Sprites/Vegetation/Laguncularia
   - id: 9
     categrory: 0
     type: 1
     name: Bruguiera
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Bruguiera is a mangrove with knee-like roots and buoyant propagules
+      that secure creek banks and reinforce mid-intertidal forests.
     imagePath: Sprites/Vegetation/Bruguiera
   - id: 10
     categrory: 0
     type: 1
     name: Sonneratia
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Sonneratia grows rapidly, using tall pneumatophores to oxygenate
+      roots and form dense stands that buffer waves on soft mudflats.
     imagePath: Sprites/Vegetation/Sonneratia
   - id: 11
     categrory: 0
     type: 2
     name: Seagrasses
-    description: Spartina is a salt-tolerant coastal grass that stabilizes sediments,
-      prevents erosion, and provides habitat in tidal marshes.
+    description: Sonneratia is a fast-growing mangrove whose tall, spike-like pneumatophores
+      and dense stands dissipate waves, oxygenate roots, and protect soft tidal mudflats.
     imagePath: Sprites/Vegetation/Spartina.jpeg
   - id: 8
     categrory: 0

@@ -82,8 +82,23 @@ public class PackageDetail : MonoBehaviour
             TextMeshProUGUI tmp = UIItemType.GetComponent<TextMeshProUGUI>();
             if (tmp != null)
             {
-                tmp.text = this.packageTableItem.type.ToString();
+                tmp.text = GetTypeName(this.packageTableItem.type);
             }
+        }
+    }
+
+    private string GetTypeName(int type)
+    {
+        switch (type)
+        {
+            case 0: return "Salt Marsh";
+            case 1: return "Mangroves";
+            case 2: return "Submerged";
+            case 3: return "Dune & Beach";
+            case 4: return "Riparian";
+            case 5: return "Freshwater Marsh";
+            case 6: return "Coastal Shrubs";
+            default: return "Unknown";
         }
     }
 }
